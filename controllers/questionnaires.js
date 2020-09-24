@@ -6,7 +6,7 @@ module.exports = {
     create: function (req, res, next) {
         /* Handle data */
 
-        QuestionnaireModel.create({ name: req.body.name }, function (err, result) {
+        QuestionnaireModel.create({ data: req.body.data }, function (err, result) {
             if (err) {
                 next(err);
             }
