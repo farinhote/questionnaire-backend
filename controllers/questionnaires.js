@@ -1,4 +1,4 @@
-const QuestionnaireModel = require('../models/Questionnaires');
+const QuestionnaireModel = require('../models/questionnaires');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
