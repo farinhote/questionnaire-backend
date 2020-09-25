@@ -89,9 +89,10 @@ function cleanUpFeedback(element) {
 module.exports = {
     create: function (req, res, next) {
         /* Handle data */
-        const { body: { data, personalData } } = req;
+        const { body: { data, personalData, userGender } } = req;
         let answers = {
             personalData,
+            userGender,
             mateChoices: [],
             ageEstimate: []
         };
