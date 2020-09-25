@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const mongoDB = 'mongodb+srv://API_Acess:ZyNxE5CuzQZKqcSq@clusterrsa.vi7da.mongodb.net/test';
+const mongoDB = 'mongodb+srv://api:PTAZjYy8wbYNz9Ss@cluster0.zxfky.mongodb.net/mate';
 
 mongoose 
   .connect(mongoDB, { useNewUrlParser: true }) 
