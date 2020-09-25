@@ -62,6 +62,30 @@ function cleanUpAgeEstimate(element) {
     };
 }
 
+function cleanUpPerception(element) {
+    const { rt, responses } = element;
+    const parsed = JSON.parse(responses);
+    const perception = parsed.perception[0];
+
+    return {
+        reactionTime: Math.floor(rt),
+        perception
+    };
+}
+
+function cleanUpFeedback(element) {
+    const { rt, responses } = element;
+    const parsed = JSON.parse(responses);
+    const suggestions = parsed.Q0;
+    const naivety = parsed.Q1;
+
+    return {
+        reactionTime: Math.floor(rt),
+        suggestions,
+        naivety
+    };
+}
+
 module.exports = {
     create: function (req, res, next) {
         /* Handle data */
@@ -79,21 +103,29 @@ module.exports = {
                 switch (trial) {
                     case 'mate-choice':
                         answers.mateChoices
-                            .push(cleanUpMateChoice(element))
+                            .push(cleanUpMateChoice(element));
                         break;
                     case 'eye-colour-question':
-                        answers.eyeColour = cleanUpEyeColour(element)
+                        answers.eyeColour = cleanUpEyeColour(element);
                         break;
                     case 'age-estimate':
                         answers.ageEstimate
-                            .push(cleanUpAgeEstimate(element))
+                            .push(cleanUpAgeEstimate(element));
                         break;
                     case 'eye-colour-attention-check':
-                        answers.attentionCheck = cleanUpEyeColour(element)
+                        answers.attentionCheck = cleanUpEyeColour(element);
+                        break;
+                    case 'perception':
+                        answers.perception = cleanUpPerception(element);
+                        break;
+                    case 'feedback':
+                        answers.feedback = cleanUpFeedback(element);
                         break;
                 }
             }
         });
+
+        console.log(answers)
 
         QuestionnaireModel.create({ data: answers }, function (err, result) {
             if (err) {
