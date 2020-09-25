@@ -65,8 +65,9 @@ function cleanUpAgeEstimate(element) {
 module.exports = {
     create: function (req, res, next) {
         /* Handle data */
-        const { body: { data } } = req;
+        const { body: { data, personalData } } = req;
         let answers = {
+            personalData,
             mateChoices: [],
             ageEstimate: []
         };
@@ -93,8 +94,6 @@ module.exports = {
                 }
             }
         });
-
-        console.log(req.body.data);
 
         QuestionnaireModel.create({ data: answers }, function (err, result) {
             if (err) {
