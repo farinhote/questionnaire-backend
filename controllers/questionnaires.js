@@ -90,7 +90,9 @@ module.exports = {
     create: function (req, res, next) {
         /* Handle data */
         const { body: { data, personalData, userGender } } = req;
+        const timestamp = Date.now();
         let answers = {
+            timestamp,
             personalData,
             userGender,
             mateChoices: [],
@@ -125,8 +127,6 @@ module.exports = {
                 }
             }
         });
-
-        console.log(answers)
 
         QuestionnaireModel.create({ data: answers }, function (err, result) {
             if (err) {
