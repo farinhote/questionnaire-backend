@@ -90,9 +90,9 @@ module.exports = {
     create: function (req, res, next) {
         /* Handle data */
         const { body: { data, personalData, userGender } } = req;
-        const timestamp = Date.now();
+        // const timestamp = Date.now();
         let answers = {
-            timestamp,
+            // timestamp,
             personalData,
             userGender,
             mateChoices: [],
