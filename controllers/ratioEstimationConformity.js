@@ -57,14 +57,14 @@ module.exports = {
         let answers = {
             timestamp,
             ip: req.ip,
-            ratioEstimations: []
+            ratioEstimationsConformity: []
         };
 
         data.forEach(element => {
             const { trial } = element;
 
             if (trial && trial === 'ratio-estimation-conformity') {
-                answers.ratioEstimations.push(cleanUpTrial(element));
+                answers.ratioEstimationsConformity.push(cleanUpTrial(element));
             }
         });
 
