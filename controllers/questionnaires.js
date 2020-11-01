@@ -94,7 +94,8 @@ module.exports = {
             personalData,
             userGender,
             mateChoices: [],
-            ageEstimate: []
+            ageEstimate: [],
+            ip: req.ip
         };
 
         data.forEach(element => {
