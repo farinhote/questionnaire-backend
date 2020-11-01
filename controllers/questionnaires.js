@@ -1,6 +1,4 @@
 const QuestionnaireModel = require('../models/questionnaires');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 
 const colours = ['Brown', 'Blue'];
 

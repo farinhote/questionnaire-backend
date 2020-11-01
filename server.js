@@ -3,8 +3,7 @@ const logger = require('morgan');
 const questionnaires = require('./routes/questionnaires');
 const mongoose = require('./config/database');
 const bodyParser = require('body-parser');
-var cors = require('cors')
-var jwt = require('jsonwebtoken');
+const cors = require('cors')
 const app = express();
 
 app.use(cors());
@@ -23,19 +22,6 @@ app.get('/', function (req, res) {
 });
 
 app.use('/questionnaires', questionnaires);
-
-function validateUser(req, res, next) {
-  jwt.verify(req.headers.authorization, req.app.get('secretKey'), function (err, decoded) {
-    if (err) {
-      res.json({ status: "error", message: err.message, data: null });
-    } else  {
-      // add user id to request
-
-      req.body.userId = decoded.id;
-      next();
-    }
-  });
-}
 
 app.use(function (req, res, next) {
   let err = new Error('Not Found');
