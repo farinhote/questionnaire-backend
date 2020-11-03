@@ -12,6 +12,19 @@ function cleanUpTrial(element) {
     };
 }
 
+function cleanUpFeedback(element) {
+    const { rt, responses } = element;
+    const parsed = JSON.parse(responses);
+    const suggestions = parsed.Q0;
+    const naivety = parsed.Q1;
+
+    return {
+        reactionTime: Math.floor(rt),
+        suggestions,
+        naivety
+    };
+}
+
 module.exports = {
     create: function (req, res, next) {
         /* Handle data */
@@ -29,6 +42,25 @@ module.exports = {
             if (trial && trial === 'ratio-estimation') {
                 answers.ratioEstimations.push(cleanUpTrial(element));
             }
+
+
+            
+            if (trial) {
+                switch (trial) {
+                    case 'feedback':
+                        answers.feedback = cleanUpFeedback(element);
+                        break;
+                }}
+
+
+
+            
+
+
+
+
+
+
         });
 
         RatioEstimationModel.create({ data: answers }, function (err, result) {
