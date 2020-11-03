@@ -43,22 +43,12 @@ module.exports = {
                 answers.ratioEstimations.push(cleanUpTrial(element));
             }
 
-
-            
             if (trial) {
                 switch (trial) {
                     case 'feedback':
                         answers.feedback = cleanUpFeedback(element);
                         break;
                 }}
-
-
-
-            
-
-
-
-
 
 
         });

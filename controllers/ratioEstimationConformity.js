@@ -66,6 +66,13 @@ module.exports = {
             if (trial && trial === 'ratio-estimation-conformity') {
                 answers.ratioEstimationsConformity.push(cleanUpTrial(element));
             }
+
+            if (trial) {
+                switch (trial) {
+                    case 'feedback':
+                        answers.feedback = cleanUpFeedback(element);
+                        break;
+                }}
         });
 
         RatioEstimationConformityModel.create({ data: answers }, function (err, result) {
