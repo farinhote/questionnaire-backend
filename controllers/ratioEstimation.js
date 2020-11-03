@@ -5,13 +5,13 @@ const RatioEstimationModel = require('../models/ratioEstimation');
 function verifyChoice(response,colorAsked) {
     let choice = 'n/a';
 
-    if (colorAsked === green && response > 50) {
+    if (colorAsked === "green" && response > 50) {
         choice = 'green'
-    } else if (colorAsked === green && response < 50) {
+    } else if (colorAsked === "green" && response < 50) {
         choice = 'red'
-    } else if (colorAsked === red && response > 50) {
+    } else if (colorAsked === "red" && response > 50) {
         choice = 'red'
-    } else if (colorAsked === red && response < 50) {
+    } else if (colorAsked === "red" && response < 50) {
         choice = 'green'
     } else if ( response === 50) {
         choice = 'tie'
