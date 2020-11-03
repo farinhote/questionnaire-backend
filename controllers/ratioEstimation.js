@@ -1,6 +1,37 @@
 const RatioEstimationModel = require('../models/ratioEstimation');
 
+
+
+function verifyChoice(response,colorAsked) {
+    let choice = 'n/a';
+
+    if (colorAsked === "green" && response > 50) {
+        choice = 'green'
+    } else if (colorAsked === "green" && response < 50) {
+        choice = 'red'
+    } else if (colorAsked === "red" && response > 50) {
+        choice = 'red'
+    } else if (colorAsked === "red" && response < 50) {
+        choice = 'green'
+    } else if ( response = 50) {
+        choice = 'tie'
+    }
+    return choice
+}
+
+function verifyAccuracy(freqGreen, choice) {
+    const colorMajority = freqGreen > 0.5 ? 'green' : 'red'
+
+    return colorMajority === choice;
+}
+
+
+
 function cleanUpTrial(element) {
+    const { freqGreen, response, colorAsked } = element;
+    const choice = verifyChoice(response,colorAsked);
+    const userAccuracy = verifyAccuracy(freqGreen, choice);
+    
     return {
         colorAsked: element.colorAsked,
         freqGreen: element.freqGreen,
@@ -8,7 +39,9 @@ function cleanUpTrial(element) {
         response: Number(element.response),
         subject: element.subject,
         trialIndex: element.trial_index - 2,
-        reactionTime: Math.floor(element.rt)
+        reactionTime: Math.floor(element.rt),
+        choice,
+        userAccuracy
     };
 }
 
