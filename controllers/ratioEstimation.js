@@ -13,7 +13,7 @@ function verifyChoice(response,colorAsked) {
         choice = 'red'
     } else if (colorAsked === "red" && response < 50) {
         choice = 'green'
-    } else if ( response = 50) {
+    } else if ( response === 50) {
         choice = 'tie'
     }
     return choice
