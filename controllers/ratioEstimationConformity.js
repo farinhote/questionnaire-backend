@@ -49,6 +49,19 @@ function cleanUpTrial(element) {
     };
 }
 
+function cleanUpFeedback(element) {
+    const { rt, responses } = element;
+    const parsed = JSON.parse(responses);
+    const suggestions = parsed.Q0;
+    const naivety = parsed.Q1;
+
+    return {
+        reactionTime: Math.floor(rt),
+        suggestions,
+        naivety
+    };
+}
+
 module.exports = {
     create: function (req, res, next) {
         /* Handle data */
