@@ -3,7 +3,7 @@ const RatioEstimationModel = require('../models/ratioEstimation');
 
 
 function verifyChoice(response,colorAsked) {
-    let choice = 'n/a';
+    let choice = 'N/A';
 
     if (colorAsked === "green" && response > 50) {
         choice = 'green'
