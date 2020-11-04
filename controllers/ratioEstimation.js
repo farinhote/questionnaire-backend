@@ -1,7 +1,6 @@
 const RatioEstimationModel = require('../models/ratioEstimation');
 
 
-
 function verifyChoice(response,colorAsked) {
     let choice = 'n/a';
 
