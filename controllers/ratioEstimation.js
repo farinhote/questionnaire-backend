@@ -35,7 +35,7 @@ function verifyChoice(response,colorAsked) {
 
 
 function verifyAccuracy(freqGreen, choice) {
-    const colorMajority = freqGreen > 0.5 ? 'green' : 'red'
+    const colorMajority = freqGreen > 0.5 ? 'green' : 'red';
 
     return colorMajority === choice;
 }
@@ -48,8 +48,8 @@ function cleanUpTrial(element) {
     const userAccuracy = verifyAccuracy(freqGreen, choice);
     
     return {
-        colorAsked: element.colorAsked,
-        freqGreen: element.freqGreen,
+        colorAsked,
+        freqGreen,
         plotId: element.plotID,
         response: Number(element.response),
         subject: element.subject,
