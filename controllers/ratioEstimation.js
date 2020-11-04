@@ -43,7 +43,7 @@ function verifyAccuracy(freqGreen, choice) {
 
 
 function cleanUpTrial(element) {
-    //const { freqGreen, response, colorAsked } = element;
+    const { freqGreen, response, colorAsked } = element;
     const choice = verifyChoice(response,colorAsked);
     const userAccuracy = verifyAccuracy(freqGreen, choice);
     
