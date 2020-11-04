@@ -4,14 +4,14 @@ const RatioEstimationModel = require('../models/ratioEstimation');
 function verifyChoice(response,colorAsked) {
     let choice = 'n/a';
 
-    if (colorAsked === "green") {
+    if ( response === 50) {
+        choice = 'tie';
+    }
+    else if (colorAsked === "green") {
       choice = response > 50 ? 'green' : 'red';
     }
      else if (colorAsked === "red") {
       choice = response > 50 ? 'red' : 'green';
-    }
-     else if ( response === 50) {
-        choice = 'tie';
     }
     return choice;
 }
