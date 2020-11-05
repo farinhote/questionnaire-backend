@@ -1,61 +1,37 @@
 const RatioEstimationModel = require('../models/ratioEstimation');
 
+function checkMajorityPerception(response, colorAsked) {
+    if (response === 50) {
+        return 'tie';
+    }
+    const oppositeColor = colorAsked === 'red' ? 'green' : 'red';
 
-/*function verifyChoice(response,colorAsked) {
-    let choice = 'n/a';
-
-    if ( response === 50) {
-        choice = 'tie';
-    }
-    else if (colorAsked === "green") {
-      choice = response > 50 ? 'green' : 'red';
-    }
-     else if (colorAsked === "red") {
-      choice = response > 50 ? 'red' : 'green';
-    }
-    return choice;
+    return response > 50 ? colorAsked : oppositeColor; 
 }
-
-/*function verifyChoice(response,colorAsked) {
-    let choice = 'n/a';
-
-    if (colorAsked === "green" && response > 50) {
-        choice = 'green';
-    } else if (colorAsked === "green" && response < 50) {
-        choice = 'red';
-    } else if (colorAsked === "red" && response > 50) {
-        choice = 'red';
-    } else if (colorAsked === "red" && response < 50) {
-        choice = 'green';
-    } else if ( response === 50) {
-        choice = 'tie';
-    }
-    return choice;
-}
-
 
 function verifyAccuracy(freqGreen, choice) {
+    const tie = choice === 'tie' && freqGreen === 0.5;
     const colorMajority = freqGreen > 0.5 ? 'green' : 'red';
 
-    return colorMajority === choice;
+    return tie || colorMajority === choice;
 }
-*/
 
 function cleanUpTrial(element) {
-    //const { freqGreen, response, colorAsked } = element;
-    //const choice = verifyChoice(response,colorAsked);
-    //const userAccuracy = verifyAccuracy(freqGreen, choice);
+    const { freqGreen, response, colorAsked } = element;
+    const responseParsed = Number(response);
+    const choice = checkMajorityPerception(responseParsed, colorAsked);
+    const userAccuracy = verifyAccuracy(freqGreen, choice);
     
     return {
-        colorAsked: element.colorAsked,
-        freqGreen: element.freqGreen,
+        colorAsked,
+        freqGreen,
         plotId: element.plotID,
-        response: Number(element.response),
+        response: responseParsed,
         subject: element.subject,
         trialIndex: element.trial_index - 2,
         reactionTime: Math.floor(element.rt),
-        //choice,
-        //userAccuracy
+        choice,
+        userAccuracy
     };
 }
 
