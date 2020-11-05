@@ -1,7 +1,7 @@
 const RatioEstimationModel = require('../models/ratioEstimation');
 
 
-function verifyChoice(response,colorAsked) {
+/*function verifyChoice(response,colorAsked) {
     let choice = 'n/a';
 
     if ( response === 50) {
@@ -31,7 +31,7 @@ function verifyChoice(response,colorAsked) {
         choice = 'tie';
     }
     return choice;
-}*/
+}
 
 
 function verifyAccuracy(freqGreen, choice) {
@@ -39,8 +39,7 @@ function verifyAccuracy(freqGreen, choice) {
 
     return colorMajority === choice;
 }
-
-
+*/
 
 function cleanUpTrial(element) {
     const { freqGreen, response, colorAsked } = element;
