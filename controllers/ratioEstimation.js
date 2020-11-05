@@ -42,9 +42,9 @@ function verifyAccuracy(freqGreen, choice) {
 */
 
 function cleanUpTrial(element) {
-    const { freqGreen, response, colorAsked } = element;
-    const choice = verifyChoice(response,colorAsked);
-    const userAccuracy = verifyAccuracy(freqGreen, choice);
+    //const { freqGreen, response, colorAsked } = element;
+    //const choice = verifyChoice(response,colorAsked);
+    //const userAccuracy = verifyAccuracy(freqGreen, choice);
     
     return {
         colorAsked: element.colorAsked,
@@ -54,8 +54,8 @@ function cleanUpTrial(element) {
         subject: element.subject,
         trialIndex: element.trial_index - 2,
         reactionTime: Math.floor(element.rt),
-        choice,
-        userAccuracy
+        //choice,
+        //userAccuracy
     };
 }
 
