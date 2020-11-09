@@ -18,7 +18,7 @@ function verifyAccuracy(freqGreen, choice) {
 
 function cleanUpTrial(element) {
     const { freqGreen, response, colorAsked } = element;
-    const responseParsed = Number(response);
+    const responseParsed = Number(response)*100/250;
     const choice = checkMajorityPerception(responseParsed, colorAsked);
     const userAccuracy = verifyAccuracy(freqGreen, choice);
     
