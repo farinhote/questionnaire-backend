@@ -54,11 +54,13 @@ function cleanUpFeedback(element) {
     const parsed = JSON.parse(responses);
     const suggestions = parsed.Q0;
     const naivety = parsed.Q1;
+    const participantContact = parsed.Q2;
 
     return {
         reactionTime: Math.floor(rt),
         suggestions,
-        naivety
+        naivety,
+        participantContact
     };
 }
 
